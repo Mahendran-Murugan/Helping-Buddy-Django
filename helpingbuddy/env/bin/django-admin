@@ -1,4 +1,4 @@
-#!/Users/mahendran/Documents/Django-Projects/env/bin/python3.11
+#!/Users/mahendran/Documents/Django-Projects/helpingbuddy/env/bin/python3.11
 # -*- coding: utf-8 -*-
 import re
 import sys
