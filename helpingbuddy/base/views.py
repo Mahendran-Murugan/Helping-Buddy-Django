@@ -16,4 +16,4 @@ def room(request, s):
         if i['id'] == int(s):
             room = i
     context = {'room': room}
-    return render(request, 'base/room.html', context);
+    return render(request, 'base/room.html', context)
