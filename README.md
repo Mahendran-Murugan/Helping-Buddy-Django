@@ -18,7 +18,7 @@ To explore the Helping Buddy Website, simply click on the following link: [https
 ## GitHub Repository
 
 To Clone this Repository :
-`git clone https://github.com/Mahendran-Murugan/Django-Projects`
+`git clone https://github.com/Mahendran-Murugan/Helping-Buddy-Django`
 
 ## How to Contribute
 
