@@ -10,6 +10,8 @@ urlpatterns = [
     path('delete-room/<str:pk>', views.deleteRoom, name= 'delete-room'),
     
     path('delete-comment/<str:pk>', views.deleteComment, name= 'delete-comment'),
+    
+    path('profile/<str:pk>', views.userProfile, name= 'user-profile'),
     # path('edit-comment/<str:pk>', views.editComment, name= 'edit-comment'),
     
     path('login/', views.loginPage, name= 'login'),
