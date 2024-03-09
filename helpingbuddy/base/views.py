@@ -67,13 +67,14 @@ def home(request):
     q = request.GET.get('q') if request.GET.get('q') != None else ''
     rooms = Room.objects.filter(Q(topic__name__icontains=q) | Q(name__icontains=q) | Q(description__icontains = q))
     roomCount = rooms.count()
+    comments = Message.objects.all()
     topic = Topic.objects.all()
-    context = {'rooms':rooms,"topics":topic,'room_count':roomCount}
+    context = {'rooms':rooms,"topics":topic,'room_count':roomCount,'comments':comments}
     return render(request, 'base/home.html', context)
 
 def room(request, pk):
     room = Room.objects.get(id=pk)
-    comments = room.message_set.all().order_by('-created')
+    comments = room.message_set.all()
     participants = room.participants.all()
     if request.method == 'POST':
         message = Message.objects.create(
