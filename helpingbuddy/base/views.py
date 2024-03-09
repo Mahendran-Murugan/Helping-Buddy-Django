@@ -91,6 +91,7 @@ def room(request, pk):
 
 def userProfile(request, pk):
     user = User.objects.get(id = pk)
+    print(user)
     rooms  = user.room_set.all()
     comments = user.message_set.all()
     topics = Topic.objects.all()
@@ -103,7 +104,9 @@ def createRoom(request):
     if request.method == 'POST':
         form = RoomForm(request.POST)
         if form.is_valid():
-            form.save()
+            room = form.save(commit=False)
+            room.host = request.user
+            room.save()
             return redirect('home')
         
     context = {'form':form}
