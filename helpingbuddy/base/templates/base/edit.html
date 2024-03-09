@@ -1,0 +1,13 @@
+{% extends 'main.html' %}
+
+{% block content %}
+<form method='POST' action=''>
+    {% csrf_token %}
+    <h3>Are You Sure You Want to Edit "{{obj}}"</h3>
+    <label for="comment"></label>
+    <input type="text" name="editedComment" value="{{obj.body}}" id="comment"><br />
+    <a href="{{request.META.HTTP_REFERER}}">Go Back</a>
+    <button type="submit">Confirm</button>
+</form>
+
+{% endblock %}
