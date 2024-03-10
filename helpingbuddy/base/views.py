@@ -63,6 +63,8 @@ def home(request):
     roomCount = rooms.count()
     comments = Message.objects.all()
     topic = Topic.objects.all()
+    if topic.count() > 5:
+        topic = topic[0:5]
     comments = Message.objects.filter(Q(room__topic__name__icontains = q))
     context = {'rooms':rooms,"topics":topic,'room_count':roomCount,'comments':comments}
     return render(request, 'base/home.html', context)
@@ -171,6 +173,14 @@ def updateUser(request):
             return redirect('user-profile',pk=user.id)
     return render(request, 'base/update_user.html', {'form':form,})
 
+
+def topicsPage(request):
+    topics = Topic.objects.filter()
+    return render(request, 'base/topics.html', {'topics':topics})
+
+def activityPage(request):
+    comments = Message.objects.all()
+    return render(request, 'base/activity.html', {"comments":comments})
      
 # @login_required(login_url='/login')
 # def editComment(request,pk):
