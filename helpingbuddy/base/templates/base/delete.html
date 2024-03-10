@@ -6,7 +6,7 @@
         <div class="layout__box">
             <div class="layout__boxHeader">
                 <div class="layout__boxTitle">
-                    <a href="index.html">
+                    <a href="{{request.META.HTTP_REFERER}}">
                         <svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="32" height="32"
                             viewBox="0 0 32 32">
                             <title>arrow-left</title>
@@ -19,9 +19,10 @@
                 </div>
             </div>
             <div class="layout__body">
-                <form class="form" action="#">
+                <form class="form" method="POST" action="">
+                    {% csrf_token %}
                     <div class="form__group">
-                        <p>Are you sure you want to delete "100 days of code"?</p>
+                        <p>Are you sure you want to Deltet "<strong> {{obj}} </strong>" ?</p>
                     </div>
 
                     <div class="for__group">
