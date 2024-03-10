@@ -1,0 +1,55 @@
+{% extends 'main.html' %}
+
+
+{% block content %}
+
+<style>
+    .roomContainer {
+        display: grid;
+        grid-template-columns: 3fr 1fr;
+    }
+</style>
+
+<div class="roomContainer">
+    <div class="roomDetails">
+        <h1>{{room.name }}</h1>
+
+        <p>{{room.description}}</p>
+
+        <div class="comments">
+            <h3>Conversations</h3>
+            <hr>
+            {%for comment in comments%}
+            <div>
+                {% if comment.user == request.user%}
+
+                <a href="{% url 'delete-comment' comment.id%}">Delete</a>
+                {% endif %}
+                <small>@{{comment.user}} {{comment.created|timesince}} ago</small>
+                <p>{{comment.body}}</p>
+            </div>
+            {%endfor%}
+        </div>
+
+        {%if request.user.is_authenticated%}
+
+        <div class="commentfrom">
+            <form method="POST">
+                {%csrf_token%}
+                <input type="text" name="body" placeholder="Write you message here...">
+            </form>
+        </div>
+    </div>
+    <div class="participants">
+        <h3>Participants</h3>
+        <hr>
+        {% for participant in participants %}
+        <div>
+            <p>@{{participant.username}}</p>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{%endif%}
+{% endblock %}

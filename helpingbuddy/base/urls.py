@@ -10,11 +10,13 @@ urlpatterns = [
     path('delete-room/<str:pk>', views.deleteRoom, name= 'delete-room'),
     
     path('delete-comment/<str:pk>', views.deleteComment, name= 'delete-comment'),
+    # path('edit-comment/<str:pk>', views.editComment, name= 'edit-comment'),
     
     path('profile/<str:pk>', views.userProfile, name= 'user-profile'),
-    # path('edit-comment/<str:pk>', views.editComment, name= 'edit-comment'),
     
     path('login/', views.loginPage, name= 'login'),
     path('register/', views.registerPage, name= 'register'),
-    path('logout/', views.logoutPage, name= 'logout')
+    path('logout/', views.logoutPage, name= 'logout'),
+    
+    path('update-user/', views.updateUser, name= 'update-user'),
 ]
